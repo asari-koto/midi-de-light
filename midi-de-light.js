@@ -3,7 +3,7 @@ var MidiDeLight = new function() {
 
 	var KEY_RANGE = {left: 36, right: 96};
 	//var KEY_RANGE = {left: 36, right: 84};
-	var PARTICLE_SIZE = canvas.width/(KEY_RANGE.right - KEY_RANGE.left + 1);
+	var PARTICLE_SIZE = window.innerWidth/(KEY_RANGE.right - KEY_RANGE.left + 1);
 
 	var p = [];
 	var isFirst = [];
