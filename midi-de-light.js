@@ -93,13 +93,14 @@ var MidiDeLight = new function() {
 
 	function extendCircle() {
 	    for (var i=0; i<c.length; i++) {
-			c[i].r += MAX_EXTEND_SPEED;
+			c[i].r += c[i].speed;
 			c[i].alpha -= 0.02;
 		}
     }
 
-    function createCircle(x, y, r, color) {
-	    c.push( new Circle(x, y, r, color) );
+    function createCircle(x, y, r, size, color) {
+		var speed = size;
+	    c.push( new Circle(x, y, r, speed, color) );
 	}
 
 	function drawCircle() {
@@ -149,7 +150,7 @@ var MidiDeLight = new function() {
 				ctx.fill();
 				if (isFirst[i]) {
 					createParticle(x, y, size, midiKey[i], {r: r, g: g, b: b});
-					createCircle(x, y, 0, {r: r, g: g, b: b});
+					createCircle(x, y, 0, size/6, {r: r, g: g, b: b});
 					isFirst[i] = false;
 				}
 
@@ -175,10 +176,11 @@ var MidiDeLight = new function() {
 		this.alpha = 1;
 	}
 
-	function Circle(x, y, r, color) {
+	function Circle(x, y, r, speed, color) {
 		this.x = x;
 		this.y = y;
 		this.r = r;
+		this.speed = speed;
 		this.color = color;
 		this.alpha = 1;
 	}
